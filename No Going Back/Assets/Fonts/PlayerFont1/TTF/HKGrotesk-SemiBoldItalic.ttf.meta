@@ -1,0 +1,40 @@
+fileFormatVersion: 2
+guid: 5828f36462a36c343ba53559f1270f37
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: HK Grotesk
+  fontNames:
+  - HK Grotesk
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3bce7dd0e87ab2144b2d8388fa5cc2b1, type: 3}
+  - {fileID: 12800000, guid: 3e7280f173aa0954885a519baf1c743f, type: 3}
+  - {fileID: 12800000, guid: 2d39acf173871c1489ce4e1ed53bf15c, type: 3}
+  - {fileID: 12800000, guid: 277aab523c42824489c9cd50778f3d4f, type: 3}
+  - {fileID: 12800000, guid: 3ac834945155e0545aafff4ca350be5e, type: 3}
+  - {fileID: 12800000, guid: 160da2e5aa8424742b50c8d30b52f97c, type: 3}
+  - {fileID: 12800000, guid: 0d8b99667e0b7ea4ab34d9000dfb7042, type: 3}
+  - {fileID: 12800000, guid: 3ca542c6680185446af60af74c6233f4, type: 3}
+  - {fileID: 12800000, guid: 100decc63c48b2649ba7c7c85e043283, type: 3}
+  - {fileID: 12800000, guid: 48ae5ea72c566e8429bb2db064e54ef2, type: 3}
+  - {fileID: 12800000, guid: 0c1d91b7e6af9314aaf3236a424bd802, type: 3}
+  - {fileID: 12800000, guid: 04ce02a9431b9534c9e6eda2d93f7292, type: 3}
+  - {fileID: 12800000, guid: 354c456ccfb4aba41b47f63119a325b9, type: 3}
+  - {fileID: 12800000, guid: 3e47ce3da7f64e349a86915618ec8257, type: 3}
+  - {fileID: 12800000, guid: 35c69b2e014e2ff4ab06ea3740d0de11, type: 3}
+  - {fileID: 12800000, guid: 32f29a3e3b5d8de4a9a23c116f46a7ea, type: 3}
+  - {fileID: 12800000, guid: 221b1b7e74c61e34587b0104abc54d4b, type: 3}
+  - {fileID: 12800000, guid: 4b220f8fd5239c843af317a58ac37229, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

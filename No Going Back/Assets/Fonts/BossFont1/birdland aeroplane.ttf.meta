@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: c53335ab8adb1fe498f0fae51a83f178
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Birdland Aeroplane
+  fontNames:
+  - Birdland Aeroplane
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c52aab124ce2ec7439b8c975d4adad2c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
