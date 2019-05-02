@@ -22,9 +22,12 @@ public class Crafting : MonoBehaviour
     bool hasAxe;
     public GameObject currentLog;
     public GameObject[] placedLogs;
+    public GameObject transitionEffect;
+    Subtitles subtitles;
 
 	void Start ()
     {
+        subtitles = FindObjectOfType<Subtitles>();
         anim = GetComponent<Animator>();
         cam = Camera.main;
         logPosition = new Vector3(3.5f,2.61f,-8.05f);
@@ -47,9 +50,21 @@ public class Crafting : MonoBehaviour
             logs -= 1;
             if(logsPlaced >= 7)
             {
-                SceneManager.LoadScene(2);
+                Stage2Transition();
             }
         }
+    }
+
+    void Stage2Transition()
+    {
+        subtitles.PlaySubtitle("Stage2Transition");
+        transitionEffect.SetActive(true);
+        Invoke("LoadStage2", 7.15f);
+    }
+
+    void LoadStage2()
+    {
+        SceneManager.LoadScene(2);
     }
 
     void OnTriggerStay(Collider other)
@@ -78,7 +93,7 @@ public class Crafting : MonoBehaviour
             PlayerMove.freezeMove = true;
             transform.position = new Vector3(92.88f, 11.672f, 76.26f);
             transform.localEulerAngles = new Vector3(0, 297, 0);
-            cam.transform.localEulerAngles = new Vector3(50f, 0, 0);
+            cam.transform.localEulerAngles = new Vector3(12f, 0, 0);
             anim.SetTrigger("Pick");
             axe = other.gameObject;
             Invoke("PickUpAxe", 2.17f);

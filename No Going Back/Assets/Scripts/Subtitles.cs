@@ -225,7 +225,54 @@ public class Subtitles : MonoBehaviour
         UnPause();
         PlayerFocus.barsOut = true;
     }
+    
+    IEnumerator S1Almost()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
 
-    //I’m gonna have to jump over these rocks.
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "I’m almost there, gotta keep going.";
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+
+    IEnumerator S1Everyone()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "I’m quite surprised I haven’t found anyone else on this island, they must be on the ship.";
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    
+    IEnumerator Stage2Transition()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "There we go! Now all I need to do is...Wait! What’s happening? Wait, No! Noooo!";
+        yield return new WaitForSeconds(3);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    //Stage2Transition
 
 }
