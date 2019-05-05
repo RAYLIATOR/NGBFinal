@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Weapon : MonoBehaviour
 {
-    Animator anim;    
+    Animator anim;
+    Subtitles subtitles;
+    public GameObject transitionEffect;
 
     void OnTriggerStay(Collider other)
     {
@@ -25,11 +27,18 @@ public class Weapon : MonoBehaviour
             transform.localEulerAngles = new Vector3(0, -79.086f, 0);
             Camera.main.transform.localEulerAngles = new Vector3(3.76f, 23.7f, 0);
             anim.SetTrigger("Reach");
+            //subtitles.PlaySubtitle("Stage3Transition");
             Invoke("Explosion", 3.5f);
         }
     }
 
     void Explosion()
+    {
+        transitionEffect.SetActive(true);
+        Invoke("Transition", 7.15f);
+    }
+
+    void Transition()
     {
         SceneManager.LoadScene(3);
     }

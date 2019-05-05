@@ -19,7 +19,7 @@ public class PlayerLook : MonoBehaviour
     private void Awake()
     {
         transform.localRotation = Quaternion.Euler(0, 0, 0);
-        playerBody.transform.rotation = Quaternion.Euler(0, -115f, 0);
+        playerBody.transform.rotation = Quaternion.Euler(0, -140f, 0);
         //freezeLook = true;
         LockCursor();
     }

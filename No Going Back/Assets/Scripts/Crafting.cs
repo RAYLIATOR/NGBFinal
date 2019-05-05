@@ -32,6 +32,7 @@ public class Crafting : MonoBehaviour
         cam = Camera.main;
         logPosition = new Vector3(3.5f,2.61f,-8.05f);
         logsPlaced = 0;
+        logs = 0;
 	}
 
     void Update()
@@ -69,8 +70,12 @@ public class Crafting : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Tree" && Input.GetKeyDown(KeyCode.P) && hasAxe && logs == 0)
+        if (other.tag == "Tree")
         {
+            print("Tree");
+        }
+        if (other.tag == "Tree" && Input.GetKeyDown(KeyCode.P) && hasAxe && logs == 0)
+        {            
             PlayerFocus.barsIn = true;
             PlayerLook.freezeLook = true;
             PlayerMove.freezeMove = true;
@@ -134,7 +139,7 @@ public class Crafting : MonoBehaviour
     {
         hasAxe = true;
         axe.transform.parent = hand.transform;
-        //axe.transform.localPosition = new Vector3(0.61f, -0.27f, 0.0f);
+        axe.transform.localPosition = new Vector3(0.399f, -0.661f, -0.857f);
     }
 
     void UnPause()

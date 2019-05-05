@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour
         {
             isGrounded = false;
         }
-        print(isGrounded);
+        //print(isGrounded);
         PlayerMovement();
     }
     

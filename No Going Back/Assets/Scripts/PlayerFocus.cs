@@ -7,7 +7,7 @@ public class PlayerFocus : MonoBehaviour
 {
     bool lookAtShip;
     Quaternion shipQuaternion;
-    Quaternion enemyQuaternion;
+    //Quaternion enemyQuaternion;
     Transform target;
     Vector3 shipViewPosition;
     int shipZoom;
@@ -21,7 +21,7 @@ public class PlayerFocus : MonoBehaviour
     float barsRate;
     bool lookAtEnemy;
     bool lookAtBoss;
-    public GameObject enemy;
+    GameObject enemy;
     bool roar;
     GameObject boss;
 
@@ -30,7 +30,7 @@ public class PlayerFocus : MonoBehaviour
         barsRate = 0.03f;
         target = GameObject.FindGameObjectWithTag("Ship").transform;
         shipQuaternion = new Quaternion(0.0f, -0.5f, 0.0f, 0.9f);
-        enemyQuaternion = new Quaternion(0.0f, 1.0f, 0.0f, 0.1f);
+        //enemyQuaternion = new Quaternion(0.0f, 1.0f, 0.0f, 0.1f);
         shipZoom = 10;
         enemyZoom = 15;
         fov = 60;
@@ -39,6 +39,7 @@ public class PlayerFocus : MonoBehaviour
 	
 	void Update ()
     {
+        print(zoomOut);    
         //print(transform.rotation);
         if(barsIn)
         {
@@ -129,8 +130,10 @@ public class PlayerFocus : MonoBehaviour
 
             //transform.localPosition = shipViewPosition;
 
-            if (transform.rotation == enemyQuaternion && !zoomOut)
+            if (!zoomOut)
             {
+                //Debug.Break();
+                //print("lol");
                 zoomIn = true;
             }
 
@@ -145,6 +148,7 @@ public class PlayerFocus : MonoBehaviour
                         roar = true;
                     }
                     Invoke("ZoomOut", 3);
+                    Camera.main.fieldOfView = shipZoom + 1;
                 }
                 else
                 {
@@ -157,7 +161,9 @@ public class PlayerFocus : MonoBehaviour
                 if (Camera.main.fieldOfView >= fov)
                 {
                     BarsOut();
+                    //Debug.Break();
                     zoomOut = false;
+                    print("ZoomOut is False");
                     lookAtEnemy = false;
                     PlayerLook.freezeLook = false;
                     PlayerMove.freezeMove = false;
@@ -186,8 +192,9 @@ public class PlayerFocus : MonoBehaviour
         BarsIn();
     }
 
-    public void LookAtEnemy()
+    public void LookAtEnemy(GameObject e)
     {
+        enemy = e;
         lookAtEnemy = true;
         BarsIn();
     }

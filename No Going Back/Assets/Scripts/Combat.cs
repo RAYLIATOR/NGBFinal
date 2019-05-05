@@ -33,6 +33,10 @@ public class Combat : MonoBehaviour
     void Update()
     {
         //Attack();
+        if(transform.position.y <= 1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     public void TakeDamage(float damage)

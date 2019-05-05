@@ -8,7 +8,7 @@ public class End : MonoBehaviour
 
 	void Start ()
     {
-        Invoke("EndGame", 3);
+        Invoke("EndGame", 5);
 	}
 	
 	void Update ()

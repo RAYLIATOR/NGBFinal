@@ -9,11 +9,28 @@ public class Subtitles : MonoBehaviour
     public Font playerFont;
     public Font memoryFont;
     public Font BossFont;
+    GameObject canvas;
 
     void Start ()
     {
-        StartCoroutine("S1Intro");
-	}
+        canvas = FindObjectOfType<Canvas>().gameObject;
+        if(canvas.tag == "1")
+        {
+            StartCoroutine("S1Intro");
+        }
+        else if(canvas.tag == "2")
+        {
+            StartCoroutine("S2Intro");
+        }
+        else if (canvas.tag == "3")
+        {
+            StartCoroutine("S3Intro");
+        }
+        else if (canvas.tag == "4")
+        {
+            StartCoroutine("End");
+        }
+    }
 
     public void PlaySubtitle(string name)
     {
@@ -37,7 +54,7 @@ public class Subtitles : MonoBehaviour
         PlayerLook.freezeLook = false;
         PlayerMove.freezeMove = false;
     }
-
+    //Stage 1
     IEnumerator S1Intro()
     {
         PlayerFocus.barsIn = true;
@@ -180,9 +197,9 @@ public class Subtitles : MonoBehaviour
         subtitleText.font = playerFont;
 
         yield return new WaitForSeconds(1);
-        subtitleText.text = "Hmm. Which way should I go? The ship should be towards the left, but...either path could lead to a dead end...I can’t afford to waste time, I might lose the ship.";
+        subtitleText.text = "Hmm. Which way should I go? The ship should be towards the left, but...either path could lead to a dead end...I can’t afford to waste time,";
         yield return new WaitForSeconds(3);
-        subtitleText.text = "I need to move, quickly.";
+        subtitleText.text = "I might lose the ship. I need to move, quickly.";
         yield return new WaitForSeconds(2);
         subtitleText.text = "";
 
@@ -273,6 +290,320 @@ public class Subtitles : MonoBehaviour
         //UnPause();
         //PlayerFocus.barsOut = true;
     }
-    //Stage2Transition
 
+    //Stage 2
+    IEnumerator S2Intro()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Wha...Where am I? Argh, my head hurts. What is...Wait a second, this place looks familiar...But...I’ve never been here before. What’s going on?";
+        yield return new WaitForSeconds(4);
+        //subtitleText.text = "";
+        //yield return new WaitForSeconds(1);
+        subtitleText.text = "Am I losing my mind? What am I doing here? I can’t remember anything! All I know is that I need to...get...to...the ship. The ship. The Ship! Yes!";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "I remember the ship. But where was it? What if its gone? No, I need get up those rocks and look for the ship. It’ll be there. It has to be there.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+
+    IEnumerator S2MidRocks()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Just a little bit...higher.";
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+
+    IEnumerator S2TopRocks()
+    {
+        //PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "There it is! Yes! Haha! It’s still there! But...how do I know that? What’s happening to me? None of this makes sense. I need to calm down.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "I need to stay focused. I need to get off this island.";
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator S2JumpOverRocks()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "I’m gonna have to jump over these rocks...again. What am I saying? I haven’t been here before. I’ve just washed ashore on this island.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "My...My mind’s just messing with me, heh. That’s all.";
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Transition()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "What’s happening? No! No! Not again!";
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    IEnumerator S2Weapon()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "What’s this? All this...This can’t be real. It...it...must be a nightmare! Yes! It’s just a nightmare! Haha! I just need to make it to the end!";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "And then I’ll wake up back in...with my...I’ll be back home. I’ll remember everything.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+
+    IEnumerator S2Memory1()
+    {
+        //PlayerFocus.barsIn = true;
+        //Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Wha..What’s happening? This isn’t real.";
+        yield return new WaitForSeconds(2);
+        
+        subtitleText.font = memoryFont;
+
+        subtitleText.text = "Why do you deny your reality?";
+        yield return new WaitForSeconds(2);
+
+        subtitleText.font = playerFont;
+
+        subtitleText.text = "Argh! What is going on? What was that thing? I think it was all in my head. I need to get to that ship.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator S2Memory2()
+    {
+        //PlayerFocus.barsIn = true;
+        //Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "No...Not another one. This is not happening to me.";
+        yield return new WaitForSeconds(2);
+
+        subtitleText.font = memoryFont;
+
+        subtitleText.text = "You cannot escape this!";
+        yield return new WaitForSeconds(2);
+
+        subtitleText.font = playerFont;
+
+        subtitleText.text = "Argh! Why does it feel so real? It doesn’t matter. It’s not real. It must be the cold. I need to stay focused.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator S2Memory3()
+    {
+        //PlayerFocus.barsIn = true;
+        //Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Hehe, you’re not real. You’re just in my head!";
+        yield return new WaitForSeconds(2);
+
+        subtitleText.font = memoryFont;
+
+        subtitleText.text = "You lie to yourself. Liar!";
+        yield return new WaitForSeconds(2);
+
+        subtitleText.font = playerFont;
+
+        subtitleText.text = "Argh! I’m not lying to myself. I’m not...lying...to myself. I’m just...losing it. Haha! I’m just losing my mind! No, no no. Snap out of it! Must make it to the ship. Now!";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator S2Memory4()
+    {
+        //PlayerFocus.barsIn = true;
+        //Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "No, No, No. What do you want from me?";
+        yield return new WaitForSeconds(2);
+
+        subtitleText.font = memoryFont;
+
+        subtitleText.text = "Embrace the inevitable!";
+        yield return new WaitForSeconds(2);
+
+        subtitleText.font = playerFont;
+
+        subtitleText.text = "Argh! Why won’t you just leave me alone! Why is this happening to me?";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator S2Memory5()
+    {
+        //PlayerFocus.barsIn = true;
+        //Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Please I just want to go home. Please!";
+        yield return new WaitForSeconds(2);
+
+        subtitleText.font = memoryFont;
+
+        subtitleText.text = "This is where you belong!";
+        yield return new WaitForSeconds(2);
+
+        subtitleText.font = playerFont;
+
+        subtitleText.text = "Argh! I just want to go home. I want to go back to...to...Argh! Why can’t I remember? Why?";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator End()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Wha...Where am I? What is this place? Argh...My head.  How did I get here? I can’t remember anything...except...Ahhhhhhhh!";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+
+    //Stage 3
+
+    IEnumerator S3Intro()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Wha...Where am I? What is this place? Argh...My head. Can’t remember much except...Oh no. No No No! This should be over! I should be awake!";
+        yield return new WaitForSeconds(4);
+        //subtitleText.text = "";
+        //yield return new WaitForSeconds(1);
+        subtitleText.text = "Awake? What am I talking about? How do I get off this cursed island? How did I get on...this island? I can’t be here forever. I have to return";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "to...to...Argh! The ship! Wait, what ship? Yes! Heh, the ship will get me back. I need to see if that ship is still here. The ship will take me home.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Lava()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Is that lava? Woah! That is cool. No...Wait...That’s actually hot, my bad. Hehe. Wait, Lava. Lava! Oh no, I could fall into that! I need to be careful.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3TopRocks()
+    {
+        //PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "There’s the ship! There it is! I’m going home! Ha! All I need to do is get to the ship, again.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Demon1()
+    {
+        //PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Ahh! What is that thing? What’s going on?";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
 }

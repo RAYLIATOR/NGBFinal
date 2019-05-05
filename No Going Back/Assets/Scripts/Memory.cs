@@ -19,11 +19,11 @@ public class Memory : MonoBehaviour
         if(attack)
         {
             distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-            //print(distanceToTarget);
+            print(distanceToTarget);
             //Vector3.MoveTowards(transform.position, target.transform.position, 1);
             transform.LookAt(Camera.main.transform);
             transform.position += transform.forward * 0.5f;
-            if(distanceToTarget <= 3f)
+            if(distanceToTarget <= 4f)
             {
                 PlayerLook.freezeLook = false;
                 PlayerMove.freezeMove = false;
