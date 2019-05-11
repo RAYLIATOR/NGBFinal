@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EventTriggers : MonoBehaviour
 {
+    Tutorial tutorial;
     PlayerFocus playerFocus;
     Subtitles subtitles;
     public GameObject memoryPrefab;
@@ -11,6 +12,7 @@ public class EventTriggers : MonoBehaviour
     int memory;
     public string subtitle;
     public GameObject enemy;
+    public string instruction;
 
     private void OnTriggerStay(Collider other)
     {
@@ -35,14 +37,43 @@ public class EventTriggers : MonoBehaviour
             }
             if (gameObject.tag == "LookAtEnemy" && other.gameObject.transform.position.y > 6.019f && other.gameObject.transform.position.y < 6.021f)
             {
-                subtitles.PlaySubtitle("S3Demon1");
+                if (Subtitles.enemies == 1)
+                {
+                    subtitles.PlaySubtitle("S3Demon1E");
+                    Subtitles.enemies += 1;
+                    playerFocus.LookAtEnemy(enemy);
+                }
+                else if (Subtitles.enemies == 2)
+                {
+                    subtitles.PlaySubtitle("S3Demon2E");
+                    Subtitles.enemies += 1;
+                    playerFocus.LookAtEnemy(enemy);
+                }
+                else if (Subtitles.enemies == 3)
+                {
+                    subtitles.PlaySubtitle("S3Demon3E");
+                    Subtitles.enemies += 1;
+                    playerFocus.LookAtEnemy(enemy);
+                }
+                else if (Subtitles.enemies == 4)
+                {
+                    subtitles.PlaySubtitle("S3Demon4E");
+                    Subtitles.enemies += 1;
+                    playerFocus.LookAtEnemy(enemy);
+                }
+                else if (Subtitles.enemies == 5)
+                {
+                    subtitles.PlaySubtitle("S3Demon5E");
+                    Subtitles.enemies += 1;
+                    playerFocus.LookAtEnemy(enemy);
+                }
                 PlayerLook.freezeLook = true;
                 PlayerMove.freezeMove = true;
-                playerFocus.LookAtEnemy(enemy);
                 Destroy(gameObject);
             }
             if (gameObject.tag == "LookAtBoss")
             {
+                subtitles.PlaySubtitle("S3Boss");
                 PlayerLook.freezeLook = true;
                 PlayerMove.freezeMove = true;
                 playerFocus.LookAtBoss();
@@ -57,6 +88,11 @@ public class EventTriggers : MonoBehaviour
                 other.transform.LookAt(transform);
                 Camera.main.transform.localEulerAngles = new Vector3(14, 0, 0);
                 Memory();
+                Destroy(gameObject);
+            }
+            if (gameObject.tag == "Instruction")
+            {
+                tutorial.ShowTutorial(instruction);
                 Destroy(gameObject);
             }
             if (gameObject.tag == "Zone")
@@ -79,6 +115,7 @@ public class EventTriggers : MonoBehaviour
 
     void Start ()
     {
+        tutorial = FindObjectOfType<Tutorial>();
         memory = 1;
         canvas = FindObjectOfType<Canvas>().gameObject;
         subtitles = FindObjectOfType<Subtitles>();

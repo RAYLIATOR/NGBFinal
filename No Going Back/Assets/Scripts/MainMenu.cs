@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour
 
 	void Start ()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         fadeInRate = 0.01f;
         fadeOutRate = 0.02f;
         fadeInOutRate = 0.01f;

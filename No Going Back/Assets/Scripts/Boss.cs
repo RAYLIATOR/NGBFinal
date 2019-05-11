@@ -7,8 +7,9 @@ public class Boss : MonoBehaviour
 {
     bool rise;
     Animator anim;
+    public GameObject fire;
 
-	void Start ()
+    void Start ()
     {
         anim = GetComponent<Animator>();
 	}
@@ -41,6 +42,12 @@ public class Boss : MonoBehaviour
     public void Smash()
     {
         anim.SetTrigger("Smash");
+        Invoke("Fire", 2.7f);
+    }
+
+    void Fire()
+    {
+        fire.SetActive(true);
         Invoke("GameEnd", 2.7f);
     }
 

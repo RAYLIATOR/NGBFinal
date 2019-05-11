@@ -20,6 +20,12 @@ TagManager:
   - 2
   - 3
   - 4
+  - LootAtEnemy1
+  - LookAtEnemy2
+  - LookAtEnemy3
+  - LookAtEnemy4
+  - LookAtEnemy5
+  - Instruction
   layers:
   - Default
   - TransparentFX

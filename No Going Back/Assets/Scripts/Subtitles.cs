@@ -10,9 +10,13 @@ public class Subtitles : MonoBehaviour
     public Font memoryFont;
     public Font BossFont;
     GameObject canvas;
+    public static int enemies;
+    Tutorial tutorial;
 
     void Start ()
     {
+        tutorial = FindObjectOfType<Tutorial>();
+        enemies = 1;
         canvas = FindObjectOfType<Canvas>().gameObject;
         if(canvas.tag == "1")
         {
@@ -79,6 +83,7 @@ public class Subtitles : MonoBehaviour
 
         UnPause();
         PlayerFocus.barsOut = true;
+        tutorial.IntroTutorial();
     }
 
     IEnumerator S1MidRocks()
@@ -171,6 +176,7 @@ public class Subtitles : MonoBehaviour
 
         UnPause();
         PlayerFocus.barsOut = true;
+        tutorial.ShowTutorial("Press E to pick up axe");
     }
     
     IEnumerator S1Beautiful()
@@ -188,7 +194,53 @@ public class Subtitles : MonoBehaviour
         UnPause();
         PlayerFocus.barsOut = true;
     }
-    
+
+    IEnumerator S1Log()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Now I just gotta place this down on the spot.";
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    IEnumerator S1OneDown()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "One down, six more to go.";
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    IEnumerator S1FourDown()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Just three more logs, Come on.";
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+
     IEnumerator S1Fork()
     {
         PlayerFocus.barsIn = true;
@@ -223,6 +275,7 @@ public class Subtitles : MonoBehaviour
 
         UnPause();
         PlayerFocus.barsOut = true;
+        tutorial.ShowTutorial("Find a spot near the edge of the water.");
     }
     
     IEnumerator S1Spot()
@@ -241,6 +294,9 @@ public class Subtitles : MonoBehaviour
 
         UnPause();
         PlayerFocus.barsOut = true;
+        tutorial.ShowTutorial("Press E to mark location");
+        yield return new WaitForSeconds(3.5f);
+        tutorial.ShowTutorial("Press E to collect logs from trees");
     }
     
     IEnumerator S1Almost()
@@ -395,6 +451,7 @@ public class Subtitles : MonoBehaviour
 
         UnPause();
         PlayerFocus.barsOut = true;
+        tutorial.ShowTutorial("Press E to take weapon");
     }
 
     IEnumerator S2Memory1()
@@ -591,7 +648,22 @@ public class Subtitles : MonoBehaviour
         //UnPause();
         //PlayerFocus.barsOut = true;
     }
-    IEnumerator S3Demon1()
+    IEnumerator S3MidRocks()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Just a little...bit...higher?";
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Demon1E()
     {
         //PlayerFocus.barsIn = true;
         Pause();
@@ -600,6 +672,147 @@ public class Subtitles : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         subtitleText.text = "Ahh! What is that thing? What’s going on?";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Demon1D()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Was that a demon? Am I in...No. No, that’s not possible. I need to keep moving.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Demon2E()
+    {
+        //PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = " Another one! No No No! Wait, maybe the nightmare isn’t over yet. Yes! I just need to get to the end, and it will all be over!";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Demon2D()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Okay! 2 down! I just need to keep going.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Demon3E()
+    {
+        //PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Haha, Hah, Bring it on!";
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Demon3D()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "That’s 3. C’mon, keep going and this nightmare will soon be over...And I’ll be back...back...home.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Demon4E()
+    {
+        //PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Ahh, there you are! I’ve been looking everywhere for you! Haha!";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Demon4D()
+    {
+        PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "Four down, I’m nearly at the ship. As soon as I get there...This will all be...over...Right? But...how I know about the ship?";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "It’s like I’ve done this before. What if it doesn't end there? What if...No, no. Don’t be silly. You gonna be fine. Just get to the ship.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        UnPause();
+        PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Demon5E()
+    {
+        //PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(1);
+        subtitleText.text = "No, no more! I just want to go home! Please! Are you the last one? Huh? Hmm. Only one way to find out.";
+        yield return new WaitForSeconds(4);
+        subtitleText.text = "";
+
+        //UnPause();
+        //PlayerFocus.barsOut = true;
+    }
+    IEnumerator S3Boss()
+    {
+        //PlayerFocus.barsIn = true;
+        Pause();
+
+        subtitleText.font = playerFont;
+
+        yield return new WaitForSeconds(2);
+        subtitleText.text = "Wha...What is happening? No. I don’t wanna go back please. Please. Go back where? I just wanna get on the ship.";
+        yield return new WaitForSeconds(4);
+
+        subtitleText.font = BossFont;
+        subtitleText.text = "Fool! Why do you try to escape your reality? Don’t you see? You are never leaving! You are doomed to relive this forever!";
         yield return new WaitForSeconds(4);
         subtitleText.text = "";
 

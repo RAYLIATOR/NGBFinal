@@ -11,14 +11,13 @@ public class Combat : MonoBehaviour
     float attackTime;
     float attackCooldown;
     Animator anim;
+    public GameObject fire;
     
     void OnTriggerStay(Collider other)
     {
         if(other.tag == "Enemy" && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            other.GetComponent<Enemy>().TakeDamage();
-            anim.SetTrigger("Attack");
-            attackTime = Time.time + attackCooldown;
+            Attack(other.gameObject);
         }
     }
 
@@ -33,10 +32,23 @@ public class Combat : MonoBehaviour
     void Update()
     {
         //Attack();
-        if(transform.position.y <= 1)
+        if (transform.position.y <= 0.5f)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            PlayerMove.freezeMove = true;
+            PlayerLook.freezeLook = true;
+            PlayerFocus.barsIn = true;
+            fire.SetActive(true);
+            Invoke("ReloadScene", 3);
         }
+        if(health<100 && closestEnemy == null)
+        {
+            health += 0.1f;
+        }
+    }
+
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void TakeDamage(float damage)
@@ -48,10 +60,11 @@ public class Combat : MonoBehaviour
         }
     }
 
-    void Attack()
+    void Attack(GameObject other)
     {
         if(Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= attackTime)
         {
+            other.GetComponent<Enemy>().TakeDamage();
             anim.SetTrigger("Attack");
             attackTime = Time.time + attackCooldown;
         }

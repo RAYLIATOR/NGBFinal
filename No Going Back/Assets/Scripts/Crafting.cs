@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Crafting : MonoBehaviour
 {
+    Tutorial tutorial;
     Animator anim;
     Camera cam;
     GameObject axe;
@@ -27,6 +28,7 @@ public class Crafting : MonoBehaviour
 
 	void Start ()
     {
+        tutorial = FindObjectOfType<Tutorial>();
         subtitles = FindObjectOfType<Subtitles>();
         anim = GetComponent<Animator>();
         cam = Camera.main;
@@ -37,17 +39,25 @@ public class Crafting : MonoBehaviour
 
     void Update()
     {
-        if (inZone && Input.GetKeyDown(KeyCode.M) && !marked)
+        if (inZone && Input.GetKeyDown(KeyCode.E) && !marked)
         {
             xInstruction.SetActive(false);
             xMark.SetActive(true);
             marked = true;
         }
-        if (inZone && Input.GetKeyDown(KeyCode.B) && marked && logs>0)
+        if (inZone && Input.GetKeyDown(KeyCode.E) && marked && logs>0)
         {
             Destroy(currentLog);
             placedLogs[logsPlaced].SetActive(true);
             logsPlaced += 1;
+            if(logsPlaced == 1)
+            {
+                subtitles.PlaySubtitle("S1OneDown");
+            }
+            if(logsPlaced == 4)
+            {
+                subtitles.PlaySubtitle("S1FourDown");
+            }
             logs -= 1;
             if(logsPlaced >= 7)
             {
@@ -74,8 +84,9 @@ public class Crafting : MonoBehaviour
         {
             print("Tree");
         }
-        if (other.tag == "Tree" && Input.GetKeyDown(KeyCode.P) && hasAxe && logs == 0)
-        {            
+        if (other.tag == "Tree" && Input.GetKeyDown(KeyCode.E) && hasAxe && logs == 0)
+        {
+            logs += 1;
             PlayerFocus.barsIn = true;
             PlayerLook.freezeLook = true;
             PlayerMove.freezeMove = true;
@@ -88,10 +99,10 @@ public class Crafting : MonoBehaviour
             cam.transform.localEulerAngles = new Vector3(50f, 0, 0);
             anim.SetTrigger("Chop");
             Destroy(other.gameObject, 4.8f);
-            Invoke("PickUpLog", 4.8f);
             Invoke("UnPause", 4.8f);
+            Invoke("PickUpLog", 4.8f);
         }
-        if (other.tag == "Axe" && Input.GetKeyDown(KeyCode.P))
+        if (other.tag == "Axe" && Input.GetKeyDown(KeyCode.E))
         {
             PlayerFocus.barsIn = true;
             PlayerLook.freezeLook = true;
@@ -107,6 +118,11 @@ public class Crafting : MonoBehaviour
             Destroy(axe.GetComponent<Rigidbody>());
             Destroy(axe.GetComponent<BoxCollider>());
         }
+    }
+
+    void LogInstruction()
+    {
+        tutorial.ShowTutorial("Press E to place log on marked spot");
     }
 
     void Axe()
@@ -126,8 +142,12 @@ public class Crafting : MonoBehaviour
         log.transform.localPosition = logPosition;
         log.transform.localEulerAngles = Vector3.zero;
         currentLog = log;
-        logs += 1;
         Invoke("WoodEffect1", 0);
+        if (logsPlaced == 0)
+        {
+            subtitles.PlaySubtitle("S1Log");
+            Invoke("LogInstruction", 3);
+        }
     }
 
     void WoodEffect1()

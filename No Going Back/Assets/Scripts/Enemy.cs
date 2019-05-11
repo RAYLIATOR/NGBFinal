@@ -13,9 +13,11 @@ public class Enemy : MonoBehaviour
     float attackTime;
     float damage;
     float health;
+    Subtitles subtitles;
 
 	void Start ()
     {
+        subtitles = FindObjectOfType<Subtitles>();
         anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player");
         chaseRange = 30f;
@@ -91,6 +93,26 @@ public class Enemy : MonoBehaviour
 
     void Fall()
     {
+        if (Subtitles.enemies == 2)
+        {
+            subtitles.PlaySubtitle("S3Demon1D");
+        }
+        else if (Subtitles.enemies == 3)
+        {
+            subtitles.PlaySubtitle("S3Demon2D");
+        }
+        else if (Subtitles.enemies == 4)
+        {
+            subtitles.PlaySubtitle("S3Demon3D");
+        }
+        else if (Subtitles.enemies == 5)
+        {
+            subtitles.PlaySubtitle("S3Demon4D");
+        }
+        else if (Subtitles.enemies == 6)
+        {
+            subtitles.PlaySubtitle("S3Demon5D");
+        }
         anim.SetTrigger("Fall");
         Destroy(gameObject, 1.5f);
     }

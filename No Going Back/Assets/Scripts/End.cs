@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class End : MonoBehaviour
 {
-
 	void Start ()
     {
         Invoke("EndGame", 5);

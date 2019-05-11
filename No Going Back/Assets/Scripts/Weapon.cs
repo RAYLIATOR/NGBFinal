@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Weapon" && Input.GetKeyDown(KeyCode.R))
+        if (other.tag == "Weapon" && Input.GetKeyDown(KeyCode.E))
         {
             PlayerFocus.barsIn = true;
             PlayerLook.freezeLook = true;
@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour
             transform.localEulerAngles = new Vector3(0, -79.086f, 0);
             Camera.main.transform.localEulerAngles = new Vector3(3.76f, 23.7f, 0);
             anim.SetTrigger("Reach");
-            //subtitles.PlaySubtitle("Stage3Transition");
+            subtitles.PlaySubtitle("S3Transition");
             Invoke("Explosion", 3.5f);
         }
     }
@@ -50,6 +50,7 @@ public class Weapon : MonoBehaviour
 
     void Start ()
     {
+        subtitles = FindObjectOfType<Subtitles>();
         anim = GetComponent<Animator>();
 	}
 	

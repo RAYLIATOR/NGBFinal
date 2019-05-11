@@ -24,9 +24,13 @@ public class PlayerFocus : MonoBehaviour
     GameObject enemy;
     bool roar;
     GameObject boss;
+    Tutorial tutorial;
+    int enemyLook;
 
     void Start ()
     {
+        enemyLook = 0;
+        tutorial = FindObjectOfType<Tutorial>();
         barsRate = 0.03f;
         target = GameObject.FindGameObjectWithTag("Ship").transform;
         shipQuaternion = new Quaternion(0.0f, -0.5f, 0.0f, 0.9f);
@@ -39,7 +43,6 @@ public class PlayerFocus : MonoBehaviour
 	
 	void Update ()
     {
-        print(zoomOut);    
         //print(transform.rotation);
         if(barsIn)
         {
@@ -130,7 +133,7 @@ public class PlayerFocus : MonoBehaviour
 
             //transform.localPosition = shipViewPosition;
 
-            if (!zoomOut)
+            if (!zoomOut && !roar)
             {
                 //Debug.Break();
                 //print("lol");
@@ -148,7 +151,7 @@ public class PlayerFocus : MonoBehaviour
                         roar = true;
                     }
                     Invoke("ZoomOut", 3);
-                    Camera.main.fieldOfView = shipZoom + 1;
+                    //Camera.main.fieldOfView = shipZoom + 1;
                 }
                 else
                 {
@@ -167,6 +170,11 @@ public class PlayerFocus : MonoBehaviour
                     lookAtEnemy = false;
                     PlayerLook.freezeLook = false;
                     PlayerMove.freezeMove = false;
+                    roar = false;
+                    if(enemyLook == 1)
+                    {
+                        tutorial.ShowTutorial("Press Left mouse button to Attack");
+                    }
                 }
                 else
                 {
@@ -194,6 +202,7 @@ public class PlayerFocus : MonoBehaviour
 
     public void LookAtEnemy(GameObject e)
     {
+        enemyLook += 1;
         enemy = e;
         lookAtEnemy = true;
         BarsIn();
